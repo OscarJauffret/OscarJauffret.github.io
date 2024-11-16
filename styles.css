@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+}
+header {
+    background: #117cef;
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+nav {
+    background: #0056b3;
+    padding: 0.5rem;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    display: inline;
+    position: relative;
+    margin-right: 15px;
+}
+
+nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -3px;
+    left: 0;
+    background-color: white;
+    transition: transform 0.25s ease-out;
+    transform-origin: bottom center;
+}
+
+nav ul li:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+section {
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 900px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+section h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5rem;
+}
+.project {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
+
+}
+.project h3 {
+    color: #333;
+}
+
+.project-type-academic {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 15px;
+    background-color: #6c63ff;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    vertical-align: top;
+    position: relative;
+    top: 1px;
+}
+
+.project-type-personal {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 6px;
+    border-radius: 15px;
+    background-color: #63d3ff;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    vertical-align: top;
+    position: relative;
+    top: 1px;
+}
+
+.project-lang {
+    display: inline-block;
+    margin-left: 0;
+    padding: 2px 6px;
+    border-radius: 15px;
+    background-color: #ffa500; /* Couleur ajustable selon vos préférences */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    vertical-align: top;
+    position: relative;
+    top: 1px; /* Ajustement de la position */
+}
+
+footer {
+    text-align: center;
+    padding: .1rem;
+    background: #0056b3;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+a {
+    color: #007bff;
+}
