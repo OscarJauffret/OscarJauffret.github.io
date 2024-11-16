@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio of Oscar Jauffret</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        header {
+            background: #117cef;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        nav {
+            background: #0056b3;
+            padding: 0.5rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 900px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        section h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+        .project {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .project h3 {
+            color: #333;
+        }
+
+        .project-type-academic {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 2px 6px;
+            border-radius: 15px;
+            background-color: #6c63ff;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            vertical-align: top;
+            position: relative;
+            top: 1px;
+        }
+
+        .project-type-personal {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 2px 6px;
+            border-radius: 15px;
+            background-color: #63d3ff;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            vertical-align: top;
+            position: relative;
+            top: 1px;
+        }
+
+        .project-lang {
+            display: inline-block;
+            margin-left: 0;
+            padding: 2px 6px;
+            border-radius: 15px;
+            background-color: #ffa500; /* Couleur ajustable selon vos préférences */
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            vertical-align: top;
+            position: relative;
+            top: 1px; /* Ajustement de la position */
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #0056b3;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        a {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Oscar Jauffret</h1>
+    <p>Software Engineer with expertise in AI, programming languages, and innovative projects</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="projects">
+    <h2>Highlighted Projects</h2>
+
+    <!-- Main Project -->
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/RechOp2024" target="_blank">Optimization of Waste Collection Routes</a>
+            <span class="project-type-academic">Academic</span>
+            <span class="project-lang">Python</span>
+        </h3>
+        <p>A traveling salesman-type project in collaboration with Sia Partners, an AI consulting firm. The goal was to minimize the distance traveled and time spent collecting waste for garbage trucks. The project was based on three real-world locations.</p>
+    </div>
+
+    <!-- Main Project -->
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/Gls-Language-Plugin" target="_blank">Gilles Language Plugin</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">Java</span>
+        </h3>
+        <p>A plugin for the <a href="#gilles-language">Gilles programming language</a> that provides syntax highlighting. This plugin is published on the JetBrains marketplace.</p>
+    </div>
+
+    <!-- Main Project -->
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/PendulumBalancer" target="_blank">Pendulum Balancer</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">C++</span>
+        </h3>
+        <p>An AI project using NEAT (NeuroEvolution of Augmenting Topologies) to solve the inverted pendulum balancing problem. Implemented from scratch in C++ with an SFML graphical interface.</p>
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/AboiementsMoka" target="_blank">Dog barking detection</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">Python</span>
+        </h3>
+        <p>An application designed to detect my dog's barks at night and play a pre-recorded message to make it stop. Utilizes Fourier transform to compare detected barks with previous samples. Runs continuously on a Raspberry Pi.</p>
+        <h3><a href="https://github.com/OscarJauffret/MokApp" target="_blank">MokApp</a>
+            <span class="project-lang">Swift</span>
+        </h3>
+        <p>An iPhone application coded in Swift to interact with the bark detection system, allowing adjustments to the decibel threshold and required similarity rate for activation.</p>
+    </div>
+
+
+    <h2>Other Projects</h2>
+
+    <div class="project"  id="gilles-language">
+        <h3><a href="https://github.com/OscarJauffret/INFO-F403-GILLES-Programming-Language" target="_blank">INFO-F403 Gilles Programming Language</a>
+            <span class="project-type-academic">Academic</span>
+            <span class="project-lang">Java</span>
+        </h3>
+        <p>Implementation of a programming language, including a lexer, parser, and compiler, all developed in Java.</p>
+    </div>
+
+    <div class="project">
+        <h3>Fitness App <span class="project-type-academic">Academic</span>
+            <span class="project-lang">Java</span>
+
+        </h3>
+        <p>Designed a fitness app for the INFO-F307 course. The project was highly focused on extensibility and code quality.</p>
+    </div>
+
+    <div class="project">
+        <h3>Operational Research Challenge <span class="project-type-academic">Academic</span>
+            <span class="project-lang">Python</span>
+        </h3>
+        <p>A challenge set by the professor to be completed within an evening.
+            The task involved solving a flow shop scheduling problem aimed at minimizing both the total makespan and
+            global waiting time. The goal was to develop multiple solutions that would create a Pareto optimal frontier.
+            I successfully won this challenge, which resulted in earning additional points for the course.</p>
+
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/Pipcount/PG-DNA-EXTENSION" target="_blank">PostgreSQL DNA extension</a>
+            <span class="project-type-academic">Academic</span>
+            <span class="project-lang">C</span>
+            <span class="project-lang">SQL</span>
+
+        </h3>
+        <p>A PostgreSQL extension for managing DNA data types, including sequences, k-mers, and q-kmers, which enables efficient query handling.</p>
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/Handwritten-Text-Recognition" target="_blank">Handwritten Text Recognition</a>
+            <span class="project-type-academic">Academic</span>
+            <span class="project-lang">Python</span>
+
+        </h3>
+        <p>An AI and image acquisition project aimed at recognizing handwritten text from photos.</p>
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/VerletSimulation" target="_blank">Verlet Simulation</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">C++</span>
+
+        </h3>
+        <p>A physics simulation using Verlet integration, implemented in C++, using the SFML library for graphics.</p>
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/SnakeAiCpp" target="_blank">Snake AI</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">C++</span>
+        </h3>
+        <p>An AI implementation to play the Snake game, developed using NEAT in C++ and SFML.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:oscarjauffret@gmail.com">oscarjauffret@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/OscarJauffret" target="_blank">github.com/OscarJauffret</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/oscarjauffret" target="_blank">linkedin.com/in/oscarjauffret</a></p>
+</section>
+
+<footer>
+    <p>&copy; 2024 Oscar Jauffret</p>
+</footer>
+</body>
+</html>
