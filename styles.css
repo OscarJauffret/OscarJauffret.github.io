@@ -117,6 +117,20 @@ section h2 {
     top: 1px; /* Ajustement de la position */
 }
 
+.project-type-ai {
+    display: inline-block;
+    margin-left: 0;
+    padding: 2px 6px;
+    border-radius: 15px;
+    background-color: #127314; /* Couleur ajustable selon vos préférences */
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    vertical-align: top;
+    position: relative;
+    top: 1px; /* Ajustement de la position */
+}
+
 footer {
     text-align: center;
     padding: .1rem;
