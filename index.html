@@ -9,7 +9,7 @@
 <body>
 <header>
     <h1>Oscar Jauffret</h1>
-    <p>Software Engineer with interests in AI, programming languages, and innovative projects</p>
+    <p>Software Engineer with interests in AI, graphics programming, simulation, and language tooling</p>
 </header>
 
 <nav>
@@ -22,8 +22,6 @@
 <section id="projects">
     <h2>Highlighted Projects</h2>
 
-    <!-- New Highlighted Projects -->
-
     <div class="project">
         <h3><a href="https://github.com/OscarJauffret/Tomate-Mozza" target="_blank">Trackmania AI</a>
             <span class="project-type-academic">Academic</span>
@@ -32,6 +30,16 @@
         </h3>
         <p>Developed reinforcement learning agents (PPO, DQN, IQN) to play the racing game Trackmania.
         Implemented curriculum learning, replay buffers, and reward shaping to improve training stability, reaching human-level performance.</p>
+    </div>
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/OceanSim" target="_blank">Ocean Surface Simulation</a>
+            <span class="project-type-personal">Personal</span>
+            <span class="project-lang">C++</span>
+            <span class="project-lang">OpenGL</span>
+        </h3>
+        <p>Real-time ocean surface simulation using superposition of Gerstner waves, implemented from scratch in C++ and OpenGL with no external libraries.
+        Wave geometry is computed in the vertex shader; physically-based foam and specular lighting are approximated in the fragment shader.</p>
     </div>
 
     <div class="project">
@@ -54,14 +62,11 @@
         Explored regression models and neural networks, demonstrating applications for prosthetics and gesture recognition. Access requires a ULB account.</p>
     </div>
 
-
-    <!-- Main Project -->
     <div class="project">
         <h3><a href="https://github.com/OscarJauffret/PendulumBalancer" target="_blank">Pendulum Balancer</a>
             <span class="project-type-personal">Personal</span>
             <span class="project-lang">C++</span>
             <span class="project-type-ai">AI</span>
-
         </h3>
         <p>An AI project using NEAT (NeuroEvolution of Augmenting Topologies) to solve the inverted pendulum balancing problem. Implemented from scratch in C++ with an SFML graphical interface.</p>
     </div>
@@ -81,25 +86,22 @@
             <span class="project-type-personal">Personal</span>
             <span class="project-lang">Java</span>
         </h3>
-        <p>A plugin for the <a href="#gilles-language">Gilles programming language</a> that provides syntax highlighting. This plugin is published on the JetBrains marketplace.</p>
-
+        <p>A plugin for the <a href="#gilles-language">Gilles programming language</a> that provides syntax highlighting and autocomplete. Published on the JetBrains marketplace.</p>
     </div>
 
-
     <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/AboiementsMoka" target="_blank">Dog barking detection</a>
+        <h3><a href="https://github.com/OscarJauffret/AboiementsMoka" target="_blank">Dog Barking Detection</a>
             <span class="project-type-personal">Personal</span>
             <span class="project-lang">Python</span>
         </h3>
-        <p>An application designed to detect my dog's barks at night and play a pre-recorded message to make it stop. Utilizes Fourier transform to compare detected barks with previous samples. Runs continuously on a Raspberry Pi.</p>
+        <p>An application designed to detect a dog's barks at night and play a pre-recorded message to make it stop. Uses Fourier transform to compare detected barks with previous samples. Runs continuously on a Raspberry Pi.</p>
         <h3><a href="https://github.com/OscarJauffret/MokApp" target="_blank">MokApp</a>
             <span class="project-lang">Swift</span>
         </h3>
         <p>An iPhone application coded in Swift to interact with the bark detection system, allowing adjustments to the decibel threshold and required similarity rate for activation.</p>
     </div>
 
-
-    <div class="project"  id="gilles-language">
+    <div class="project" id="gilles-language">
         <h3>INFO-F403 Gilles Programming Language
             <span class="project-type-academic">Academic</span>
             <span class="project-lang">Java</span>
@@ -111,10 +113,8 @@
         <h3>Fitness App
             <span class="project-type-academic">Academic</span>
             <span class="project-lang">Java</span>
-
         </h3>
-        <p>Designed a fitness app for the INFO-F307 course. The project was highly focused on extensibility and code quality.
-            The app allows to create exercise programs. Access requires a ULB account.</p>
+        <p>Designed a fitness app for the INFO-F307 course. Highly focused on extensibility and code quality. The app allows users to create and manage exercise programs. Access requires a ULB account.</p>
     </div>
 
     <div class="project">
@@ -122,31 +122,33 @@
             <span class="project-type-academic">Academic</span>
             <span class="project-lang">Python</span>
         </h3>
-        <p>A challenge set by the professor to be completed within an evening.
-            The task involved solving a flow-shop scheduling problem aimed at minimizing both the total makespan and
-            global waiting time. The goal was to develop multiple solutions that would create a Pareto optimal frontier.
-            I successfully won this challenge, which resulted in earning additional points for the course.</p>
+        <p>A challenge set by the professor to be completed within an evening. The task involved solving a flow-shop scheduling problem minimizing total makespan and global waiting time via a Pareto optimal frontier. Won the challenge against the full cohort.</p>
+    </div>
 
+
+    <div class="project">
+        <h3><a href="https://github.com/OscarJauffret/FlowshopSLS" target="_blank">Flowshop Heuristic Optimization</a>
+            <span class="project-type-academic">Academic</span>
+            <span class="project-lang">C++</span>
+        </h3>
+        <p>Implemented and benchmarked multiple metaheuristic algorithms for the flowshop scheduling problem: iterative improvement, variable neighborhood descent, tabu search, and a memetic algorithm combining evolutionary search with local search. Structured as a clean C++ framework with configurable solvers, neighborhood operators, and statistical testing scripts.</p>
     </div>
 
     <div class="project">
-        <h3>PostgreSQL DNA extension
+        <h3>PostgreSQL DNA Extension
             <span class="project-type-academic">Academic</span>
             <span class="project-lang">C</span>
             <span class="project-lang">SQL</span>
-
         </h3>
-        <p>A PostgreSQL extension for managing DNA data types, including sequences, k-mers, and q-kmers, which enables efficient query handling. Please request access if you are interested.</p>
+        <p>A PostgreSQL extension for managing DNA data types, including sequences, k-mers, and q-kmers, enabling efficient query handling. Please request access if you are interested.</p>
     </div>
-
 
     <div class="project">
         <h3><a href="https://github.com/OscarJauffret/VerletSimulation" target="_blank">Verlet Simulation</a>
             <span class="project-type-personal">Personal</span>
             <span class="project-lang">C++</span>
-
         </h3>
-        <p>A physics simulation using Verlet integration, implemented in C++, using the SFML library for graphics.</p>
+        <p>A physics simulation using Verlet integration, implemented in C++ with the SFML library for graphics.</p>
     </div>
 
     <div class="project">
@@ -154,7 +156,6 @@
             <span class="project-type-personal">Personal</span>
             <span class="project-lang">C++</span>
             <span class="project-type-ai">AI</span>
-
         </h3>
         <p>An AI implementation to play the Snake game, developed using NEAT in C++ and SFML.</p>
     </div>
@@ -166,11 +167,10 @@
     <p>GitHub: <a href="https://github.com/OscarJauffret" target="_blank">github.com/OscarJauffret</a></p>
 </section>
 
-<!-- Need to add empty space at the end of the page to prevent the footer from overlapping the content -->
 <div style="height: 100px;"></div>
 
 <footer>
-    <p>&copy; 2025 Oscar Jauffret</p>
+    <p>&copy; 2026 Oscar Jauffret</p>
 </footer>
 </body>
 </html>
