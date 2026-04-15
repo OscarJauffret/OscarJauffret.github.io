@@ -3,174 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio of Oscar Jauffret</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Oscar Jauffret</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #f7f5f2; --surface: #ffffff; --text: #1a1a1a;
+            --text-muted: #6b6b6b; --text-faint: #a0a0a0;
+            --accent: #1d5aff; --accent-light: #eef1ff;
+            --border: #e8e5e0; --border-hover: #c8c4be;
+            --shadow-hover: 0 2px 6px rgba(0,0,0,0.08), 0 8px 28px rgba(0,0,0,0.07);
+            --radius: 12px;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        header { padding: 5rem 2rem 4rem; text-align: center; position: relative; }
+        header::after { content: ''; display: block; width: 48px; height: 2px; background: var(--accent); margin: 2rem auto 0; border-radius: 2px; }
+        header h1 { font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; color: var(--text); margin-bottom: 0.75rem; }
+        header p { font-size: 0.95rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.01em; max-width: 480px; margin: 0 auto; }
+        nav { display: flex; justify-content: center; gap: 0.25rem; padding: 0 2rem 3rem; }
+        nav a { font-family: var(--sans); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); text-decoration: none; padding: 0.4rem 1rem; border-radius: 999px; border: 1px solid transparent; transition: color 0.2s, border-color 0.2s, background 0.2s; }
+        nav a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+        main { max-width: 860px; margin: 0 auto; padding: 0 2rem 8rem; }
+        .section-label { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+        section { margin-bottom: 4rem; }
+        .project-grid { display: grid; gap: 1rem; }
+        .project-grid.highlighted { grid-template-columns: 1fr 1fr; }
+        @media (max-width: 640px) { .project-grid.highlighted { grid-template-columns: 1fr; } }
+        .project { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s; }
+        .project:hover { border-color: var(--border-hover); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+        .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.6rem; }
+        .project h3 { font-family: var(--sans); font-size: 1.0rem; font-weight: 500; color: var(--text); line-height: 1.3; }
+        .project h3 a { color: inherit; text-decoration: none; position: relative; }
+        .project h3 a::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.25s ease; }
+        .project h3 a:hover::after { width: 100%; }
+        .project h3 a:hover { color: var(--accent); }
+        .project p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.4rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.9rem; }
+        .tag { font-size: 0.72rem; font-weight: 500; padding: 0.2rem 0.55rem; border-radius: 999px; letter-spacing: 0.02em; }
+        .tag-academic { background: #ede9fe; color: #5b21b6; }
+        .tag-personal { background: #dbeafe; color: #1d4ed8; }
+        .tag-lang { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+        .tag-ai { background: #dcfce7; color: #166534; }
+        .link-icon { flex-shrink: 0; width: 18px; height: 18px; color: var(--text-faint); margin-top: 3px; transition: color 0.2s; }
+        .project:hover .link-icon { color: var(--accent); }
+        .project-list { display: grid; gap: 0.5rem; }
+        .project-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem; transition: border-color 0.2s, background 0.2s; }
+        .project-item:hover { border-color: var(--border-hover); background: #fafafa; }
+        .project-item-name { font-size: 0.9rem; font-weight: 500; color: var(--text); text-decoration: none; flex: 1; }
+        .project-item-name:hover { color: var(--accent); }
+        .project-item-desc { font-size: 0.82rem; color: var(--text-muted); flex: 2; line-height: 1.4; }
+        .project-item-tags { display: flex; gap: 0.3rem; flex-shrink: 0; }
+        @media (max-width: 640px) { .project-item { flex-direction: column; align-items: flex-start; } .project-item-desc { display: none; } }
+        .contact-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .contact-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; font-weight: 500; color: var(--text); text-decoration: none; padding: 0.6rem 1.1rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); transition: border-color 0.2s, color 0.2s, background 0.2s; }
+        .contact-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+        footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--text-faint); border-top: 1px solid var(--border); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        header, nav, main > section { animation: fadeUp 0.5s ease both; }
+        nav { animation-delay: 0.1s; }
+        main > section:nth-child(1) { animation-delay: 0.15s; }
+        main > section:nth-child(2) { animation-delay: 0.2s; }
+        main > section:nth-child(3) { animation-delay: 0.25s; }
+    </style>
 </head>
 <body>
+
 <header>
     <h1>Oscar Jauffret</h1>
-    <p>Software Engineer with interests in AI, graphics programming, simulation, and language tooling</p>
+    <p>Engineer with interests in AI, graphics programming, simulation, and language tooling</p>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
 </nav>
 
-<section id="projects">
-    <h2>Highlighted Projects</h2>
+<main>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/Tomate-Mozza" target="_blank">Trackmania AI</a>
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Python</span>
-            <span class="project-type-ai">AI</span>
-        </h3>
-        <p>Developed reinforcement learning agents (PPO, DQN, IQN) to play the racing game Trackmania.
-        Implemented curriculum learning, replay buffers, and reward shaping to improve training stability, reaching human-level performance.</p>
-    </div>
+    <section id="projects">
+        <p class="section-label">Highlighted Projects</p>
+        <div class="project-grid highlighted">
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/OceanSim" target="_blank">Ocean Surface Simulation</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">C++</span>
-            <span class="project-lang">OpenGL</span>
-        </h3>
-        <p>Real-time ocean surface simulation using superposition of Gerstner waves, implemented from scratch in C++ and OpenGL with no external libraries.
-        Wave geometry is computed in the vertex shader; physically-based foam and specular lighting are approximated in the fragment shader.</p>
-    </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3><a href="https://github.com/OscarJauffret/Tomate-Mozza" target="_blank">Trackmania AI</a></h3>
+                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <p>Reinforcement learning agents (PPO, DQN, IQN) trained to play Trackmania. Implemented curriculum learning, replay buffers, and reward shaping from scratch; reaching human-level performance.</p>
+                <div class="tags">
+                    <span class="tag tag-academic">Academic</span>
+                    <span class="tag tag-ai">AI</span>
+                    <span class="tag tag-lang">Python</span>
+                    <span class="tag tag-lang">PyTorch</span>
+                </div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/Handwritten-Text-Recognition" target="_blank">Handwritten Text Recognition</a>
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Python</span>
-            <span class="project-type-ai">AI</span>
-        </h3>
-        <p>Built an end-to-end OCR pipeline for handwritten text recognition from images.
-        Implemented preprocessing (noise reduction, normalization) and trained a convolutional neural network, achieving 94% accuracy.</p>
-    </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3><a href="https://github.com/OscarJauffret/OceanSim" target="_blank">Ocean Surface Simulation</a></h3>
+                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <p>Real-time ocean simulation using Gerstner wave superposition, built from scratch in C++ and OpenGL with no external libraries. Wave geometry runs in the vertex shader; foam and specular lighting in the fragment shader.</p>
+                <div class="tags">
+                    <span class="tag tag-personal">Personal</span>
+                    <span class="tag tag-lang">C++</span>
+                    <span class="tag tag-lang">OpenGL</span>
+                    <span class="tag tag-lang">GLSL</span>
+                </div>
+            </div>
 
-    <div class="project">
-        <h3>Hand Joint Prediction from EMG Signals
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Python</span>
-            <span class="project-type-ai">AI</span>
-        </h3>
-        <p>Designed a pipeline to predict hand joint positions from EMG signals using preprocessing, feature extraction, and supervised learning.
-        Explored regression models and neural networks, demonstrating applications for prosthetics and gesture recognition. Access requires a ULB account.</p>
-    </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3><a href="https://github.com/OscarJauffret/PendulumBalancer" target="_blank">NEAT Pendulum &amp; Snake AI</a></h3>
+                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <p>Full NEAT algorithm (topology mutation, crossover, speciation) implemented from scratch in C++ with no libraries. Applied to inverted pendulum balancing and Snake, with real-time SFML visualisation.</p>
+                <div class="tags">
+                    <span class="tag tag-personal">Personal</span>
+                    <span class="tag tag-ai">AI</span>
+                    <span class="tag tag-lang">C++</span>
+                </div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/PendulumBalancer" target="_blank">Pendulum Balancer</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">C++</span>
-            <span class="project-type-ai">AI</span>
-        </h3>
-        <p>An AI project using NEAT (NeuroEvolution of Augmenting Topologies) to solve the inverted pendulum balancing problem. Implemented from scratch in C++ with an SFML graphical interface.</p>
-    </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3><a href="https://github.com/OscarJauffret/Gls-Language-Plugin" target="_blank">Gilles Language Plugin</a></h3>
+                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <p>JetBrains IDE plugin providing syntax highlighting and autocomplete for a custom programming language, published on the JetBrains marketplace. Paired with a full compiler (lexer, parser, code generation).</p>
+                <div class="tags">
+                    <span class="tag tag-personal">Personal</span>
+                    <span class="tag tag-lang">Java</span>
+                    <span class="tag tag-lang">JetBrains SDK</span>
+                </div>
+            </div>
 
-    <h2>Other Projects</h2>
+            <div class="project">
+                <div class="project-header">
+                    <h3><a href="https://github.com/OscarJauffret/Handwritten-Text-Recognition" target="_blank">Handwritten Text Recognition</a></h3>
+                    <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </div>
+                <p>End-to-end OCR pipeline: preprocessing, CNN training, and evaluation. Achieved 94% accuracy on handwritten text recognition, outperforming baseline models.</p>
+                <div class="tags">
+                    <span class="tag tag-academic">Academic</span>
+                    <span class="tag tag-ai">AI</span>
+                    <span class="tag tag-lang">Python</span>
+                    <span class="tag tag-lang">PyTorch</span>
+                </div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/RechOp2024" target="_blank">Optimization of Waste Collection Routes</a>
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Python</span>
-        </h3>
-        <p>A traveling salesman-type project in collaboration with Sia Partners, an AI consulting firm. The goal was to minimize the distance traveled and time spent collecting waste for garbage trucks. The project was based on three real-world locations.</p>
-    </div>
+            <div class="project">
+                <div class="project-header">
+                    <h3>Hand Joint Prediction from EMG</h3>
+                </div>
+                <p>Pipeline predicting hand joint positions from EMG electrode signals using frequency-domain feature extraction and supervised learning. Applications for prosthetics and gesture recognition. Access requires a ULB account.</p>
+                <div class="tags">
+                    <span class="tag tag-academic">Academic</span>
+                    <span class="tag tag-ai">AI</span>
+                    <span class="tag tag-lang">Python</span>
+                </div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/Gls-Language-Plugin" target="_blank">Gilles Language Plugin</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">Java</span>
-        </h3>
-        <p>A plugin for the <a href="#gilles-language">Gilles programming language</a> that provides syntax highlighting and autocomplete. Published on the JetBrains marketplace.</p>
-    </div>
+        </div>
+    </section>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/AboiementsMoka" target="_blank">Dog Barking Detection</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">Python</span>
-        </h3>
-        <p>An application designed to detect a dog's barks at night and play a pre-recorded message to make it stop. Uses Fourier transform to compare detected barks with previous samples. Runs continuously on a Raspberry Pi.</p>
-        <h3><a href="https://github.com/OscarJauffret/MokApp" target="_blank">MokApp</a>
-            <span class="project-lang">Swift</span>
-        </h3>
-        <p>An iPhone application coded in Swift to interact with the bark detection system, allowing adjustments to the decibel threshold and required similarity rate for activation.</p>
-    </div>
+    <section>
+        <p class="section-label">Other Projects</p>
+        <div class="project-list">
 
-    <div class="project" id="gilles-language">
-        <h3>INFO-F403 Gilles Programming Language
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Java</span>
-        </h3>
-        <p>Implementation of a programming language, including a lexer, parser, and compiler, all developed in Java. Please request access if you are interested.</p>
-    </div>
+            <div class="project-item">
+                <a href="https://github.com/OscarJauffret/FlowshopSLS" target="_blank" class="project-item-name">Flowshop Heuristic Optimization</a>
+                <span class="project-item-desc">Iterative improvement, VND, tabu search, and memetic algorithm for the flowshop scheduling problem in a clean C++ solver framework.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">C++</span></div>
+            </div>
 
-    <div class="project">
-        <h3>Fitness App
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Java</span>
-        </h3>
-        <p>Designed a fitness app for the INFO-F307 course. Highly focused on extensibility and code quality. The app allows users to create and manage exercise programs. Access requires a ULB account.</p>
-    </div>
+            <div class="project-item">
+                <a href="https://github.com/OscarJauffret/RechOp2024" target="_blank" class="project-item-name">Waste Collection Route Optimisation</a>
+                <span class="project-item-desc">Real-world TSP for garbage truck fleets across 3 live locations, in collaboration with Sia Partners AI consulting.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">Python</span></div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/Flowshop-challenge" target="_blank">Operational Research Challenge</a>
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">Python</span>
-        </h3>
-        <p>A challenge set by the professor to be completed within an evening. The task involved solving a flow-shop scheduling problem minimizing total makespan and global waiting time via a Pareto optimal frontier. Won the challenge against the full cohort.</p>
-    </div>
+            <div class="project-item">
+                <a href="https://github.com/OscarJauffret/VerletSimulation" target="_blank" class="project-item-name">Verlet Physics Simulation</a>
+                <span class="project-item-desc">Rigid body physics using Verlet integration, visualised in real time with SFML.</span>
+                <div class="project-item-tags"><span class="tag tag-personal">Personal</span><span class="tag tag-lang">C++</span></div>
+            </div>
 
+            <div class="project-item">
+                <a href="https://github.com/OscarJauffret/AboiementsMoka" target="_blank" class="project-item-name">Dog Barking Detection</a>
+                <span class="project-item-desc">Real-time bark classifier using Fourier transform fingerprinting on Raspberry Pi, controlled via a Swift iOS app.</span>
+                <div class="project-item-tags"><span class="tag tag-personal">Personal</span><span class="tag tag-lang">Python</span><span class="tag tag-lang">Swift</span></div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/FlowshopSLS" target="_blank">Flowshop Heuristic Optimization</a>
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">C++</span>
-        </h3>
-        <p>Implemented and benchmarked multiple metaheuristic algorithms for the flowshop scheduling problem: iterative improvement, variable neighborhood descent, tabu search, and a memetic algorithm combining evolutionary search with local search. Structured as a clean C++ framework with configurable solvers, neighborhood operators, and statistical testing scripts.</p>
-    </div>
+            <div class="project-item">
+                <a href="https://github.com/OscarJauffret/Flowshop-challenge" target="_blank" class="project-item-name">Operational Research Challenge - 1st Place</a>
+                <span class="project-item-desc">Flow-shop scheduling solved in one evening, producing a Pareto optimal frontier. Won against the full cohort.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">Python</span></div>
+            </div>
 
-    <div class="project">
-        <h3>PostgreSQL DNA Extension
-            <span class="project-type-academic">Academic</span>
-            <span class="project-lang">C</span>
-            <span class="project-lang">SQL</span>
-        </h3>
-        <p>A PostgreSQL extension for managing DNA data types, including sequences, k-mers, and q-kmers, enabling efficient query handling. Please request access if you are interested.</p>
-    </div>
+            <div class="project-item" id="gilles-language">
+                <span class="project-item-name">Gilles Programming Language</span>
+                <span class="project-item-desc">Full compiler: lexer, parser, and code generator, in Java. Request access if interested.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">Java</span></div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/VerletSimulation" target="_blank">Verlet Simulation</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">C++</span>
-        </h3>
-        <p>A physics simulation using Verlet integration, implemented in C++ with the SFML library for graphics.</p>
-    </div>
+            <div class="project-item">
+                <span class="project-item-name">PostgreSQL DNA Extension</span>
+                <span class="project-item-desc">PostgreSQL extension for DNA data types (sequences, k-mers, q-kmers) with efficient query handling.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">C</span><span class="tag tag-lang">SQL</span></div>
+            </div>
 
-    <div class="project">
-        <h3><a href="https://github.com/OscarJauffret/SnakeAiCpp" target="_blank">Snake AI</a>
-            <span class="project-type-personal">Personal</span>
-            <span class="project-lang">C++</span>
-            <span class="project-type-ai">AI</span>
-        </h3>
-        <p>An AI implementation to play the Snake game, developed using NEAT in C++ and SFML.</p>
-    </div>
-</section>
+            <div class="project-item">
+                <span class="project-item-name">Fitness App</span>
+                <span class="project-item-desc">Extensibility-focused exercise program app built for a software engineering course. Access requires a ULB account.</span>
+                <div class="project-item-tags"><span class="tag tag-academic">Academic</span><span class="tag tag-lang">Java</span></div>
+            </div>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:oscarjauffret@gmail.com">oscarjauffret@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/OscarJauffret" target="_blank">github.com/OscarJauffret</a></p>
-</section>
+        </div>
+    </section>
 
-<div style="height: 100px;"></div>
+    <section id="contact">
+        <p class="section-label">Contact</p>
+        <div class="contact-grid">
+            <a href="mailto:oscarjauffret@gmail.com" class="contact-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                oscarjauffret@gmail.com
+            </a>
+            <a href="https://github.com/OscarJauffret" target="_blank" class="contact-link">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                github.com/OscarJauffret
+            </a>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2026 Oscar Jauffret</p>
-</footer>
+</main>
+
+<footer>&copy; 2026 Oscar Jauffret</footer>
+
 </body>
 </html>
