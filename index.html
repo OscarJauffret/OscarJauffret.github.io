@@ -68,6 +68,17 @@
         main > section:nth-child(1) { animation-delay: 0.15s; }
         main > section:nth-child(2) { animation-delay: 0.2s; }
         main > section:nth-child(3) { animation-delay: 0.25s; }
+        .project.clickable { cursor: pointer; }
+        .project.clickable h3 a { color: var(--text); }
+        .project.clickable:hover h3 a { color: var(--accent); }
+        .project.clickable:hover h3 a::after { width: 100%; }
+        .video-modal { position: fixed; inset: 0; background: rgba(20, 20, 20, 0.85); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 2rem; opacity: 0; transition: opacity 0.2s ease; }
+        .video-modal.open { display: flex; opacity: 1; }
+        .video-modal-content { position: relative; width: 100%; max-width: 960px; background: #000; border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .video-modal-content video { width: 100%; height: auto; display: block; }
+        .video-modal-close { position: absolute; top: -2.5rem; right: 0; width: 32px; height: 32px; background: transparent; border: none; color: #fff; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; opacity: 0.85; transition: opacity 0.2s; }
+        .video-modal-close:hover { opacity: 1; }
+        @media (max-width: 640px) { .video-modal { padding: 1rem; } .video-modal-close { top: -2.25rem; } }
     </style>
 </head>
 <body>
@@ -88,7 +99,7 @@
         <p class="section-label">Highlighted Projects</p>
         <div class="project-grid highlighted">
 
-            <div class="project">
+            <div class="project clickable" data-video="assets/so101.mp4" role="button" tabindex="0" aria-label="Play SO-101 project video">
                 <div class="project-header">
                     <h3><a>VLA Robot Learning (SO-101)</a></h3>
                 </div>
@@ -257,6 +268,49 @@
 </main>
 
 <footer>&copy; 2026 Oscar Jauffret</footer>
+
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Project video">
+    <div class="video-modal-content">
+        <button class="video-modal-close" id="videoModalClose" aria-label="Close video">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <video id="videoModalPlayer" controls playsinline preload="metadata"></video>
+    </div>
+</div>
+
+<script>
+    (function () {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('videoModalPlayer');
+        const closeBtn = document.getElementById('videoModalClose');
+
+        function openModal(src) {
+            player.src = src;
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            player.play().catch(() => {});
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            player.pause();
+            player.removeAttribute('src');
+            player.load();
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.project.clickable[data-video]').forEach(card => {
+            card.addEventListener('click', () => openModal(card.dataset.video));
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card.dataset.video); }
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    })();
+</script>
 
 </body>
 </html>
